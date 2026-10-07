@@ -1,0 +1,11 @@
+Python: 3.11.8 (tags/v3.11.8:db85d51, Feb  6 2024, 22:03:32) [MSC v.1937 64 bit (AMD64)]
+NumPy: 1.26.4
+Pandas: 2.2.2
+Scikit-learn: 1.5.0
+SciPy: 1.13.1
+Matplotlib: 3.9.0
+Seaborn: 0.13.2
+PyTorch: 2.3.1+cpu
+Torchvision: 0.18.1+cpu
+Joblib: 1.4.2
+psutil: 5.9.8
