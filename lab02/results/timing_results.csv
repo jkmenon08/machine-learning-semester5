@@ -1,0 +1,3 @@
+operation,batch_size,runs,median_time_ms
+forward,128,100,0.121000
+backward,128,100,0.124750

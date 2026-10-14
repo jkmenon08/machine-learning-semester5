@@ -92,3 +92,37 @@ The training-loss comparison graph is saved as `results/training_loss.png`. It s
 * Training epochs: 50
 * Results: `results/training_results.csv`
 * Training-loss plot: `results/training_loss.png`
+##  Forward and Backward Propagation Timing
+
+### Goal
+
+Measure the execution time of forward propagation and backward propagation separately using the two-hidden-layer neural network implemented from scratch with NumPy.
+
+### Method
+
+The experiment used a batch of 128 samples from the scikit-learn Digits dataset. The neural network used 64 input features, two hidden layers with 16 neurons each, and 10 output classes.
+
+Before measurement, both operations were executed 10 times as warm-up runs. Forward propagation and backward propagation were then measured separately over 100 timed runs using Python's `time.perf_counter()`. The median execution time was calculated for each operation.
+
+### Results
+
+| Operation            | Batch size | Timed runs | Median execution time (ms) |
+| -------------------- | ---------: | ---------: | -------------------------: |
+| Forward propagation  |        128 |        100 |                   0.121000 |
+| Backward propagation |        128 |        100 |                   0.124750 |
+
+Backward propagation was approximately 3.10% slower than forward propagation in this experiment.
+
+### Discussion
+
+Forward propagation calculates activations and output probabilities by passing input data through the network. Backward propagation calculates gradients using the chain rule to determine how the loss changes with respect to the weights and biases.
+
+Both operations use matrix multiplication. Forward propagation multiplies input and activation matrices by weight matrices, while backward propagation performs matrix multiplications to calculate weight gradients and propagate errors through the network. These calculations contribute to the computational cost of both operations.
+
+In this experiment, backward propagation took slightly longer than forward propagation. The difference was small, and the result applies to this network architecture, batch size, implementation, and computer. Other configurations may produce different timings.
+
+### Conclusions
+
+1. Backward propagation had a median execution time of 0.124750 ms, compared with 0.121000 ms for forward propagation.
+2. Backward propagation was approximately 3.10% slower for the tested batch of 128 samples.
+3. Matrix multiplication is an important computational operation in both passes. Backward propagation also calculates gradients and propagates errors, which can contribute to its execution time.
